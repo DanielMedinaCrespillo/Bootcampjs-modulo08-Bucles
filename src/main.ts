@@ -89,8 +89,10 @@ const obtenPacientesAsignadosAPediatria = (
   return pacientesPediatria;
 };
 
-const pacientesPediatria = obtenPacientesAsignadosAPediatria(pacientes);
-console.log("Pacientes asignados a Pediatría:", pacientesPediatria);
+console.log(
+  "Pacientes asignados a Pediatría:",
+  obtenPacientesAsignadosAPediatria(pacientes)
+);
 
 //Apartado 1 (B)
 
@@ -107,11 +109,9 @@ const obtenPacientesAsignadosAPediatriaYMenorDeDiezAnios = (
   return pacientesPediatriaMenor10Anios;
 };
 
-const pacientesPediatriaMenor10Anios =
-  obtenPacientesAsignadosAPediatriaYMenorDeDiezAnios(pacientes);
 console.log(
   "Pacientes de pediatria con edad menor a 10 años:",
-  pacientesPediatriaMenor10Anios
+  obtenPacientesAsignadosAPediatriaYMenorDeDiezAnios(pacientes)
 );
 
 //Apartado 2
@@ -124,14 +124,14 @@ const activarProtocoloUrgencia = (pacientes: Pacientes[]): boolean => {
       pacientes[i].frecuenciaCardiaca > 100 &&
       pacientes[i].temperatura > 39
     ) {
-      return (activarProtocolo = true);
+      activarProtocolo = true;
+      return activarProtocolo;
     }
   }
   return activarProtocolo;
 };
 
-const protocoloDeUrgencia = activarProtocoloUrgencia(pacientes);
-console.log(protocoloDeUrgencia);
+console.log(activarProtocoloUrgencia(pacientes));
 
 //Apartado 3
 
@@ -153,10 +153,9 @@ const reasignaPacientesAMedicoFamilia = (
   return pacientesModificados;
 };
 
-const pacientesReasignados = reasignaPacientesAMedicoFamilia(pacientes);
 console.log(
   "Pacientes de Pediatria modificados a Medico de familia:",
-  pacientesReasignados
+  reasignaPacientesAMedicoFamilia(pacientes)
 );
 
 //Apartado 4
@@ -167,13 +166,16 @@ const HayPacientesDePediatria = (pacientes: Pacientes[]): boolean => {
   for (let i = 0; i < pacientes.length; i++) {
     if (pacientes[i].especialidad === "Pediatra") {
       pacientesPediatra = true;
+      break;
     }
   }
   return pacientesPediatra;
 };
 
-const pacientesActivosPediatria = HayPacientesDePediatria(pacientes);
-console.log("Pacientes activos en pediatria:", pacientesActivosPediatria);
+console.log(
+  "Pacientes activos en pediatria:",
+  HayPacientesDePediatria(pacientes)
+);
 
 //Apartado 5
 
@@ -204,5 +206,6 @@ const cuentaPacientesPorEspecialidad = (
   return sumaDeEspecialidad;
 };
 
-const sumaTotalEspecialidad = cuentaPacientesPorEspecialidad(pacientes);
-console.log("Total de especialidad", sumaTotalEspecialidad);
+console.log("Total de especialidad", cuentaPacientesPorEspecialidad(pacientes));
+
+console.log(pacientes);
